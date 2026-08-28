@@ -9,9 +9,6 @@
             "include": "#literals"
         },
         {
-            "include": "#functions"
-        },
-        {
             "include": "#types"
         },
         {
@@ -62,52 +59,6 @@
                 }
             ]
         },
-        "functions": {
-            "patterns": [
-                {
-                    "comment": "function definition",
-                    "name": "meta.function.definition.patina",
-                    "begin": "\\b(fn)\\s+([a-z][a-z0-9_]*)(\\()",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "keyword.other.fn.patina"
-                        },
-                        "2": {
-                            "name": "entity.name.function.patina"
-                        }
-                    },
-                    "end": "(=)",
-                    "endCaptures": {
-                        "1": {
-                            "name": "keyword.operator.assignment.equal.patina"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#comments"
-                        },
-                        {
-                            "include": "#literals"
-                        },
-                        {
-                            "include": "#types"
-                        },
-                        {
-                            "include": "#keywords"
-                        },
-                        {
-                            "include": "#punctuation"
-                        },
-                        {
-                            "include": "#strings"
-                        },
-                        {
-                            "include": "#variables"
-                        }
-                    ]
-                }
-            ]
-        },
         "keywords": {
             "patterns": [
                 {
@@ -116,24 +67,39 @@
                     "match": "\\b(if|else|match|for|in|loop|return|break|continue)\\b"
                 },
                 {
+                    "comment": "import keyword",
+                    "name": "storage.type.import.patina",
+                    "match": "\\bimport\\b"
+                },
+                {
                     "comment": "let keyword",
-                    "name": "keyword.other.patina",
+                    "name": "storage.type.let.patina",
                     "match": "\\blet\\b"
                 },
                 {
-                    "comment": "const keyword",
-                    "name": "keyword.declaration.const.patina",
-                    "match": "\\bconst\\b"
+                    "comment": "def keyword",
+                    "name": "storage.type.def.patina",
+                    "match": "\\bdef\\b"
                 },
                 {
-                    "comment": "enum keyword",
-                    "name": "keyword.declaration.enum.patina",
-                    "match": "\\benum\\b"
+                    "comment": "impl keyword",
+                    "name": "storage.type.impl.patina",
+                    "match": "\\bimpl\\b"
                 },
                 {
-                    "comment": "record keyword",
-                    "name": "keyword.declaration.record.patina",
-                    "match": "\\brecord\\b"
+                    "comment": "type keyword",
+                    "name": "storage.type.type.patina",
+                    "match": "\\btype\\b"
+                },
+                {
+                    "comment": "pub keyword",
+                    "name": "storage.modifier.pub.patina",
+                    "match": "\\bpub\\b"
+                },
+                {
+                    "comment": "opaque keyword",
+                    "name": "storage.modifier.opaque.patina",
+                    "match": "\\bopaque\\b"
                 },
                 {
                     "comment": "fn keyword",
@@ -147,7 +113,7 @@
                 },
                 {
                     "comment": "print keyword",
-                    "name": "keyword.other.print.patina",
+                    "name": "variable.language.print.patina",
                     "match": "\\bprint\\b"
                 },
                 {
@@ -162,7 +128,7 @@
                 },
                 {
                     "comment": "single equal",
-                    "name": "keyword.operator.assignment.equal.patina",
+                    "name": "keyword.operator.assignment.patina",
                     "match": "(?<![<>])=(?!=)"
                 },
                 {
@@ -182,7 +148,7 @@
                 },
                 {
                     "comment": "dot access",
-                    "name": "keyword.operator.access.dot.patina",
+                    "name": "keyword.operator.dot.patina",
                     "match": "\\."
                 },
                 {
@@ -191,8 +157,8 @@
                     "match": ":"
                 },
                 {
-                    "comment": "dashrocket, skinny arrow",
-                    "name": "keyword.operator.arrow.skinny.patina",
+                    "comment": "arrow",
+                    "name": "keyword.operator.arrow.patina",
                     "match": "->"
                 }
             ]
@@ -207,7 +173,7 @@
                 {
                     "comment": "primitive types",
                     "name": "entity.name.type.primitive.patina",
-                    "match": "\\b(Bool|Char)\\b"
+                    "match": "\\b(Bool)\\b"
                 },
                 {
                     "comment": "types",
@@ -247,17 +213,6 @@
                     "name": "string.quoted.double.patina",
                     "begin": "\"",
                     "end": "\"",
-                    "patterns": [
-                        {
-                            "include": "#escapes"
-                        }
-                    ]
-                },
-                {
-                    "comment": "characters",
-                    "name": "string.quoted.single.char.patina",
-                    "begin": "'",
-                    "end": "'",
                     "patterns": [
                         {
                             "include": "#escapes"
